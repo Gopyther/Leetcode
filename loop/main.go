@@ -28,9 +28,10 @@ func main() {
 	// 64
 	// 81
 	// 100
-
+	// For each VALUE in the Array.
 	for _, square := range squareNumbers {
-		// Access and print what's at the i'th index.
+		// Print the current value of square.
 		fmt.Println(square)
 	}
+	// Prints exactly the same as the previous example.
 }
