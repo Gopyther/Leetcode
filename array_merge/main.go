@@ -18,6 +18,7 @@ func main() {
 }
 func merge(nums1 []int, m int, nums2 []int, n int) {
 	temp := make([]int, 0)
+	fmt.Println(len(nums1))
 	i := 0
 	j := 0
 	for i+j < m+n {
