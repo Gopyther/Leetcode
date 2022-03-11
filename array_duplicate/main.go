@@ -9,24 +9,13 @@ func main() {
 }
 
 func removeDuplicates(nums []int) int {
-	if len(nums) == 0 {
-		return 0
-	}
-	ch := make(chan int)
-	go checker(nums, ch)
-	k := <-ch
-	return k
-}
-
-func checker(nums []int, ch chan int) {
-	k := 0
-	n := -101
-	for _, v := range nums {
-		if n != v {
-			nums[k] = v
-			k++
-			n = v
+	idx := 0
+	for i := 0; i < len(nums); i++ {
+		for i+1 < len(nums) && nums[i] == nums[i+1] {
+			i++
 		}
+		nums[idx] = nums[i]
+		idx++
 	}
-	ch <- k
+	return idx
 }
