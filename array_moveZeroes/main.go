@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func main() {
 	nums := []int{0, 1, 0, 3, 12}
 	moveZeroes(nums)
@@ -41,11 +39,8 @@ func moveZeroes(nums []int) {
 	n := 0
 	for i, elem := range nums {
 		if elem != 0 {
-
 			nums[i], nums[n] = 0, elem
 			n++
 		}
-
 	}
-	fmt.Println(nums)
 }
