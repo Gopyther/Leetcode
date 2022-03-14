@@ -10,7 +10,7 @@ func main() {
 }
 
 func removeElement(nums []int, val int) int {
-	if len(nums) >= 1 {
+	if len(nums) <= 1 {
 		return len(nums)
 	}
 	i, j := 0, len(nums)-1
