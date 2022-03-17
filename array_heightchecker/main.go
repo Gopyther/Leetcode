@@ -10,7 +10,7 @@ func main() {
 }
 
 func heightChecker(heights []int) int {
-	heightfreq := make([]int, 100)
+	heightfreq := make([]int, 101)
 	for _, v := range heights {
 		heightfreq[v]++
 	}
