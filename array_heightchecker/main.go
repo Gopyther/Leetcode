@@ -54,25 +54,25 @@ func heightChecker(heights []int) int {
 // 	return count
 // }
 
-// func quickSort(arr []int, l, r int) {
-// 	if l < r {
-// 		p := partition(arr, l, r)
-// 		quickSort(arr, l, p-1)
-// 		quickSort(arr, p+1, r)
-// 	}
-// }
+func quickSort(arr []int, l, r int) {
+	if l < r {
+		p := partition(arr, l, r)
+		quickSort(arr, l, p-1)
+		quickSort(arr, p+1, r)
+	}
+}
 
-// func partition(arr []int, l, r int) int {
-// 	pivot := arr[r] // pivot
-// 	i := (l - 1)
+func partition(arr []int, l, r int) int {
+	pivot := arr[r] // pivot
+	i := (l - 1)
 
-// 	for j := l; j <= r-1; j++ {
+	for j := l; j <= r-1; j++ {
 
-// 		if arr[j] <= pivot {
-// 			i++
-// 			arr[i], arr[j] = arr[j], arr[i]
-// 		}
-// 	}
-// 	arr[i+1], arr[r] = arr[r], arr[i+1]
-// 	return i + 1
-// }
+		if arr[j] <= pivot {
+			i++
+			arr[i], arr[j] = arr[j], arr[i]
+		}
+	}
+	arr[i+1], arr[r] = arr[r], arr[i+1]
+	return i + 1
+}
