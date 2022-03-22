@@ -16,8 +16,9 @@ func main() {
 
 	// 3. make a copy
 	var v2 = v1 // another reference to v1
-	var v3 = []int{}
+	v3
 	copy(v3, v1) // make an actual copy of v1
+	fmt.Println(v3)
 
 	// 4. get length
 	fmt.Println("The size of v1 is: ", len(v1))
