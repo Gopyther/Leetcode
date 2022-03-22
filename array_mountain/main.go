@@ -98,38 +98,38 @@ func validMountainArray(arr []int) bool {
 // 	return false
 // }
 
-func validMountainArray(arr []int) bool {
-	if len(arr) <= 2 {
-		return false
-	}
-	l := 0
-	r := len(arr) - 1
+// func validMountainArray(arr []int) bool {
+// 	if len(arr) <= 2 {
+// 		return false
+// 	}
+// 	l := 0
+// 	r := len(arr) - 1
 
-	for i := 0; i < len(arr)-1; i++ {
-		if arr[i] < arr[i+1] {
-			l++
-		} else if arr[i] == arr[i+1] {
-			return false
-		} else {
-			break
-		}
-	}
-	for j := len(arr) - 1; j > 0; j-- {
-		if arr[j] < arr[j-1] {
-			r--
-		} else if arr[j] == arr[j-1] {
-			return false
-		} else {
-			break
-		}
-	}
+// 	for i := 0; i < len(arr)-1; i++ {
+// 		if arr[i] < arr[i+1] {
+// 			l++
+// 		} else if arr[i] == arr[i+1] {
+// 			return false
+// 		} else {
+// 			break
+// 		}
+// 	}
+// 	for j := len(arr) - 1; j > 0; j-- {
+// 		if arr[j] < arr[j-1] {
+// 			r--
+// 		} else if arr[j] == arr[j-1] {
+// 			return false
+// 		} else {
+// 			break
+// 		}
+// 	}
 
-	if l == r && r != len(arr)-1 && r != 0 {
-		return true
-	}
+// 	if l == r && r != len(arr)-1 && r != 0 {
+// 		return true
+// 	}
 
-	return false
-}
+// 	return false
+// }
 
 // func validMountainArray(arr []int) bool {
 // 	if len(arr) <= 2 {
