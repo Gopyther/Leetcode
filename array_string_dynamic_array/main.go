@@ -16,7 +16,7 @@ func main() {
 
 	// 3. make a copy
 	var v2 = v1 // another reference to v1
-	v3
+	v3 := make([]int, len(v1))
 	copy(v3, v1) // make an actual copy of v1
 	fmt.Println(v3)
 
@@ -51,6 +51,6 @@ func main() {
 	// 9. delete the last element
 	v1 = v1[:len(v1)-1]
 
-	fmt.Println(v0)
+	fmt.Println(v0) //v0 should be used for running code.
 
 }
