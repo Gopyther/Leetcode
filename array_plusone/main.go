@@ -3,31 +3,52 @@ package main
 import "fmt"
 
 func main() {
-	digits := []int{9,9,9}
+	digits := []int{9, 9, 9}
 	fmt.Println(plusOne(digits))
 }
 
 func plusOne(digits []int) []int {
-	l := len(digits) + 1
-	for _, d := range digits {
-		if d < 9 {
-			l--
+	index := len(digits)
+
+	digits[index-1]++
+	num := digits[index-1]
+	for num >= 10 {
+		digits[index-1] -= 10
+
+		index -= 1
+		if index == 0 {
+			digits = append([]int{1}, digits...)
 			break
+		} else {
+			digits[index-1]++
+			num = digits[index-1]
 		}
 	}
-	sum := make([]int, l)
-	c := 1
-	for i, j := len(digits)-1, len(sum)-1; i >= 0; i-- {
-		//fmt.Println(i, j, digits[i], sum[j],c)
-		sum[j] = (digits[i] + c) % 10
-		c = (digits[i] + c) / 10
-		j--
-	}
-	if c > 0 {
-		sum[0] = c
-	}
-	return sum
+
+	return digits
 }
+
+// func plusOne(digits []int) []int {
+// 	l := len(digits) + 1
+// 	for _, d := range digits {
+// 		if d < 9 {
+// 			l--
+// 			break
+// 		}
+// 	}
+// 	sum := make([]int, l)
+// 	c := 1
+// 	for i, j := len(digits)-1, len(sum)-1; i >= 0; i-- {
+// 		//fmt.Println(i, j, digits[i], sum[j],c)
+// 		sum[j] = (digits[i] + c) % 10
+// 		c = (digits[i] + c) / 10
+// 		j--
+// 	}
+// 	if c > 0 {
+// 		sum[0] = c
+// 	}
+// 	return sum
+// }
 
 // func plusOne(digits []int) []int {
 // 	length := len(digits)
