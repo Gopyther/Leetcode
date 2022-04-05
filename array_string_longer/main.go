@@ -3,13 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	strs := []string{"flower", "flow", "flight"}
+	strs := []string{"power", "water", "teller"}
 	fmt.Println(longestCommonPrefix(strs))
 }
 
 func longestCommonPrefix(strs []string) string {
 	shortest := 201
 	short := ""
+	longest := ""
+	buf := ""
 	for _, v := range strs {
 		if len(v) < shortest {
 			shortest = len(v)
@@ -17,21 +19,45 @@ func longestCommonPrefix(strs []string) string {
 		}
 	}
 	for i := shortest; i >= 0; i-- {
-		fmt.Println(short[0:i])
+		length := i
+		right := 0
 
-		for j := 0; j < len(strs); j++ {
-			temp := strs[j]
-			for k := len(temp); k >= 0; k-- {
-				fmt.Println(temp[0:k])
+		for _, v := range strs {
+			temp := v
+			for j := 0; j < len(temp); j++ {
+				if j+length >= len(temp) {
+					break
+				}
+				if temp[j:j+length] == short[0:i] {
+					right++
+					buf = short[0:i]
+				}
 			}
-			if j+shortest > len(strs[j]) {
-				break
-			}
-			if temp[j:j+shortest-i] == short[0:i] {
-				fmt.Println(temp[j:j+shortest-i], "True")
+			if right == len(strs) && len(longest) < len(buf) {
+				longest = buf
 			}
 		}
 	}
 
-	return "ch"
+	for i := 0; i < shortest; i++ {
+		length := shortest - i
+		left := 0
+		for _, v := range strs {
+			temp := v
+			for j := 0; j < len(temp); j++ {
+				if j+length >= len(temp) {
+					break
+				}
+				if temp[j:j+length] == short[i:shortest] {
+					left++
+					buf = short[i:shortest]
+				}
+				if left == len(strs) && len(longest) < len(buf) {
+					longest = buf
+				}
+			}
+		}
+	}
+
+	return longest
 }
