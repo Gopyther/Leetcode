@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	target := 7
-	nums := []int{2, 3, 1, 2, 4, 3}
+	target := 11
+	nums := []int{1, 2, 3, 4, 5}
 	fmt.Println(minSubArrayLen(target, nums))
 }
 
@@ -23,16 +23,20 @@ func minSubArrayLen(target int, nums []int) int {
 		} else if sum >= target && lp < rp {
 			lp++
 			sum -= nums[lp]
+		} else if sum < target && rp == len(nums) {
+			break
 		} else {
 			break
 		}
-		if sum == target {
-			fmt.Println(rp, lp)
-			if size > 1+rp-lp {
-				size = 1 + rp - lp
+		if sum >= target {
+			if size > rp-lp {
+				size = rp - lp
 			}
 		}
 
+	}
+	if size == math.MaxInt {
+		return 0
 	}
 	return size
 }
