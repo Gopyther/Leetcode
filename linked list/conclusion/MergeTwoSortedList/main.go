@@ -37,8 +37,18 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 		}
 	}
 
-	if list1 != nil{
-		for list1
+	if list1 != nil {
+		for list1.Next != nil {
+			merge.Val = list1.Val
+			merge = merge.Next
+			list1 = list1.Next
+		}
+	} else {
+		for list2.Next != nil {
+			merge.Val = list2.Val
+			merge = merge.Next
+			list2 = list2.Next
+		}
 	}
 
 	return head
