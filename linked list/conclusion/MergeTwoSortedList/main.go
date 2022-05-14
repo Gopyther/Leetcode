@@ -13,6 +13,10 @@ func main() {
 
 	result := mergeTwoLists(&node1, &nodea)
 
+	for result.Next != nil {
+		fmt.Println(result)
+		result = result.Next
+	}
 	fmt.Println(result)
 }
 
@@ -25,31 +29,24 @@ type ListNode struct {
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	merge := &ListNode{}
 	head := merge
-	for list1 != nil || list2 != nil {
-		if list1.Val >= list2.Val {
-			merge.Val = list1.Val
+
+	for list1 != nil && list2 != nil {
+		if list1.Val <= list2.Val {
+			merge.Next = list1
 			merge = merge.Next
 			list1 = list1.Next
 		} else {
-			merge.Val = list2.Val
+			merge.Next = list2
 			merge = merge.Next
 			list2 = list2.Next
 		}
 	}
 
 	if list1 != nil {
-		for list1.Next != nil {
-			merge.Val = list1.Val
-			merge = merge.Next
-			list1 = list1.Next
-		}
+		merge.Next = list1
 	} else {
-		for list2.Next != nil {
-			merge.Val = list2.Val
-			merge = merge.Next
-			list2 = list2.Next
-		}
+		merge.Next = list2
 	}
 
-	return head
+	return head.Next
 }
