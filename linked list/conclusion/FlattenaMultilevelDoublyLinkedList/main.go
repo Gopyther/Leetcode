@@ -42,15 +42,19 @@ type Node struct {
 }
 
 func flatten(root *Node) *Node {
-	if root == nil {
-		return root
+	if root != nil {
+		helper(root)
 	}
-	head := root
+	return root
+
+}
+
+func helper(root *Node) *Node {
 	end := &Node{}
 
 	for root.Next != nil {
 		if root.Child != nil {
-			end = flatten(root.Child)
+			end = helper(root.Child)
 			root.Next.Prev = end
 			end.Next = root.Next
 			root.Next = root.Child
@@ -60,15 +64,13 @@ func flatten(root *Node) *Node {
 		root = root.Next
 	}
 
-	if root.Child != nil {
-		root.Next = root.Child
-		root.Next.Prev = root
+	for root.Child != nil && root.Next == nil {
+		end = helper(root.Child)
+		root.Next = end
+		end.Prev = root
 		root.Child = nil
-		return head
 	}
-	if head.Val != 1 {
-		return root
-	}
-	return head
+
+	return root
 
 }
