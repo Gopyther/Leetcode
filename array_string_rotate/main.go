@@ -15,10 +15,11 @@ func rotate(nums []int, k int) {
 	if length-k >= 1 {
 		temp = append(temp, nums[length-k:]...)
 		temp = append(temp, nums[:length-k]...)
+		copy(nums, temp)
+		return
 	} else {
 		count := 0
 		buf := 0
-		length := len(nums)
 		for count < k {
 			buf = nums[length-1]
 			for i := length - 1; i > 0; i-- {
@@ -29,8 +30,6 @@ func rotate(nums []int, k int) {
 		}
 		return
 	}
-
-	copy(nums, temp)
 }
 
 // func rotate(nums []int, k int) {
